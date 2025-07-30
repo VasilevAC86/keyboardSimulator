@@ -1,0 +1,38 @@
+body{
+    margin: 0; 
+    font-family: Arial, Helvetica, sans-serif;    
+}
+
+.container{
+    width: 100%;    
+    max-width: 1200px;
+    margin: 0 auto;    
+}
+
+#login-form{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    border-radius: 3px;
+    border: 1px solid #444;
+    padding: 20px;
+    gap: 20px;
+    align-items: center;
+}
+a{
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid rgb(116, 111, 111);
+    border-radius: 3px;
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color: rgb(134, 41, 41);
+}
+a:active{
+    border: 1px solid rgb(209, 199, 199);
+}
+button:hover{
+    color: rgb(134, 41, 41);
+}
