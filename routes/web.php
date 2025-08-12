@@ -13,6 +13,8 @@ Route::post('/reg', [AuthController::class, 'register']); # при action, сс�
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout']); # метод post, чтобы разлогиниться по ссылке
 
+Route ::post('/chose-file', [AuthController::class,'choseFile']); # при action, ссылающемся на /chose-file, вызывается ф. choseFile, добавляющая текстовый файл в БД
+
 Route::group(['middleware' => ['auth']], function(){ # защищённая группа маршрутов, защищённая middleware (проверка авторизации пользователя)
     Route::get('/lenta', [MainController::class, 'lentaPage']); # маршрут для пользователей в статусе user
     Route::get('/admin', [MainController::class,'adminPage']); # маршрут для администраторов

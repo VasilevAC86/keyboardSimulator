@@ -46,4 +46,7 @@ class AuthController extends Controller
         $request->session()->regenerateToken(); # обновляем токен, чтобы он был недействительным
         return redirect("/");
     }
+    public function choseFile(Request $request){
+        echo("Данные успешно занесены в базу данных");
+    }
 }
