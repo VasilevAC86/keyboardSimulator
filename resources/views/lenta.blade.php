@@ -9,10 +9,20 @@
 </head>
 <body>
     @auth <!--Работрает как if-->
-        <h3>
-            {{ auth() -> user() -> email}} 
-            <a href="/logout">Выйти</a>
-        </h3>
+    <div class="container">
+        <label>Вы зашли, как пользователь</label>
+        <label class="selected">{{ auth()->user()->name }}</label>
+        <br /><br />
+        <label>Список доступных тем:</label>
+        <br /><br />
+        @foreach ($topics as $topic)
+            <div class="topic">
+                {{ $topic->name }}
+            </div>
+        @endforeach
+        <br /><br />
+        <a href="/logout">Выйти</a>
+    </div>
     @else
         <h3>Вы не авторизованы!</h3>
     @endauth
