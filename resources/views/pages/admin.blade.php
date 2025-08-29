@@ -8,7 +8,7 @@
     @vite(entrypoints: ['resources/css/app.css', 'resources/js/app.js']) <!--Подключаем файлы-->
 </head>
 <body>
-    @auth <!--Работрает как if-->
+    @auth <!--Работает как if-->
     <div class="container">
         <label>Вы зашли, как </label>
         <label class="selected">{{ auth()->user()->name }}</label>  
@@ -16,11 +16,11 @@
         <br /><br />
         <label>Список доступных тем:</label>
         <br /><br />
-        @foreach ($topics as $topic)
+        @foreach ($topics as $topic) 
             <div class="topic">
                 {{ $topic->name }}
             </div>
-        @endforeach        
+        @endforeach     
         <br /><br />
         <a href="/add">Добавить новую тему для тестирования</a>     
         <br /><br />

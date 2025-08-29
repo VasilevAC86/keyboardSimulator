@@ -8,14 +8,17 @@ use App\Models\Topic; # Подключаем модель для отправк�
 
 class MainController extends Controller
 {
-    public function lentaPage(){
-        return view("lenta");
+    public function welcomePage(){
+        return view("pages/welcome");
+    }
+    public function userPage(){
+        return view("pages/user");
     }
     public function adminPage(){
-        return view("admin");
+        return view("pages/admin");
     }
     public function addPage(){
-        return view("add");
+        return view("pages/add");
     }
     public function addTopic(Request $request){
         $validated = $request->validate([
@@ -36,8 +39,8 @@ class MainController extends Controller
         $user = Auth::user(); # объект, в котором содержатся данные о пользователе        
         $topics = Topic::all(); # переменная-объект, хранящая данные всех тем вместе с данными о пользователях
         if($user->status == 'admin'){
-            return view('/admin', ['topics' => $topics]); // ответ с темами для админа
+            return view('pages/admin', ['topics' => $topics]); // ответ с темами для админа
         }
-        return view('/lenta', ['topics'=> $topics]); // ответ с темами для пользователя
+        return view('pages/user', ['topics'=> $topics]); // ответ с темами для пользователя
     }
 }

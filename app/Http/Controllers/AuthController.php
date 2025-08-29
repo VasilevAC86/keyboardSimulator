@@ -9,10 +9,10 @@ use App\Models\User; # Подключаем класс User для исполь�
 class AuthController extends Controller
 {
     public function loginPage(){
-        return view("welcome");
+        return view("pages/login");
     }
     public function regPage(){
-        return view("reg");
+        return view("pages/reg");
     }
 
     public function register(Request $request){ # Request - это объект запроса
@@ -25,18 +25,17 @@ class AuthController extends Controller
         return redirect("/"); # возврат на страницу login
     }
     public function login(Request $request){ # ф. для авторизации пользователя (трубуется имя и пароль)
-        $credentials = $request->validate([
-            # "email" => "required|email",
+        $credentials = $request->validate([            
             "name" => "required",
             "password" => "required" # чтобы поле было просто заполнено
         ]);
         if(Auth::attempt($credentials)){ # attempt пробует авторизовать пользователя
             $user = Auth::user(); # в переменную user записываем данные из БД
-            if ($user['status'] == 'admin') { # если пользователь зашёл под статусом admin, то направляем его на стр. admin
-                return redirect('/admin');
-            }
             $request->session()->regenerate(); # чтобы пользователю сохранить ключ сессии в браузере
-            return redirect("/lenta"); # отправляем пользователя на закрытыю стр. lenta
+            if ($user['status'] == 'admin') { # если пользователь зашёл под статусом admin, то направляем его на стр. admin
+                return redirect("/admin");
+            }            
+            return redirect("/user"); # отправляем пользователя на закрытыю middleware стр. user
         }
         return back()->withErrors(["email" => "Учётные данные не верны!"]);
     }
@@ -45,8 +44,5 @@ class AuthController extends Controller
         $request->session()->invalidate(); # забираем пользовательскую сессию
         $request->session()->regenerateToken(); # обновляем токен, чтобы он был недействительным
         return redirect("/");
-    }
-    public function choseFile(Request $request){
-        echo("Данные успешно занесены в базу данных");
-    }
+    }    
 }

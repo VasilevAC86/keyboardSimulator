@@ -14,12 +14,13 @@
         <label class="selected">{{ auth()->user()->name }}</label>
         <br /><br />
         <label>Список доступных тем:</label>
-        <br /><br />
-        @foreach ($topics as $topic)
-            <div class="topic">
-                {{ $topic->name }}
-            </div>
-        @endforeach
+        <br /><br />            
+        <select name="chose_topic" aria-placeholder="Выберите тему для тестирования">
+            <option value="" disabled selected hidden>Пожалуйста, выберите тему для тестирвания</option> <!--placeholder для элемента select-->
+            @foreach ($topics as $topic)
+                <option value="{{ $topic->id }}">{{ $topic->name }}</option>
+            @endforeach
+        </select>        
         <br /><br />
         <a href="/logout">Выйти</a>
     </div>
