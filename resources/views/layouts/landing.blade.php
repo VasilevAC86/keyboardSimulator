@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>@yield('title')</title> <!--Объявляем секцию, внутрь которой можно что-нибудь подставить-->
-    @vite(['resources/css/landing.css']) <!--Подключаем ресуры-->
+    <!--Подключаем ресуры-->
+    @vite([ 
+        'resources/css/landing.css',
+        'resources/css/var.css'
+        ]) 
 </head>
 <body>
-    <h1 class="greeting">Добро пожаловать в <br /> Клавиатурный тренажёр</h1>
+    <h2 class="greeting">Добро пожаловать в Клавиатурный тренажёр</h2>
     <div class="description">
         @yield('description') <!--Объявляем секцию-->
     </div>

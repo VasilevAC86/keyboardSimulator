@@ -1,0 +1,7 @@
+/*Переменные для удобства*/
+:root{
+    --background-color: #5f93ce;
+    --btn-color: rgb(18, 184, 18);
+    --btn-color-hover: rgb(159, 184, 48);
+    --btn-border-hover: rgb(168, 32, 32);
+}
