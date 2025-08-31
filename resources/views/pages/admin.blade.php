@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Страница администратора</title>
+@extends('layouts/authed')
+@section('title', 'Клавиатурный тренажёр')
+@section('headline', 'Добро пожаловать в Клавиатурный тренажёр')
 
-    @vite(entrypoints: ['resources/css/app.css', 'resources/js/app.js']) <!--Подключаем файлы-->
-</head>
-<body>
-    @auth <!--Работает как if-->
-    <div class="container">
-        <label>Вы зашли, как </label>
+@section('div')
+        <label>Вы зашли как </label>
         <label class="selected">{{ auth()->user()->name }}</label>  
-        <label>, с правами администратора</label>
+        <label> с правами администратора</label>
         <br /><br />
         <label>Список доступных тем:</label>
         <br /><br />
@@ -22,13 +15,7 @@
             </div>
         @endforeach     
         <br /><br />
-        <a href="/add">Добавить новую тему для тестирования</a>     
+        <a href="/add" class="btn">Добавить новую тему для тестирования</a>     
         <br /><br />
-        <a href="/logout">Выйти</a>
-    </div>         
-    @else
-        <h3>Вы не авторизованы!</h3>
-    @endauth
-
-</body>
-</html>
+        <a href="/logout" class="btn">На главную страницу / Выйти</a>
+@endsection

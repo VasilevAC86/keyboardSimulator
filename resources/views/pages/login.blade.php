@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Клавиатурный тренажёр</title>
+@extends('layouts/auth')
+@section('title', 'ВХОД в Клавиатурный тренажёр')
+@section('headline', 'Войти в Клавиатурный тренажёр')
 
-    @vite(entrypoints: ['resources/css/app.css', 'resources/js/app.js']) <!--Подключаем файлы-->
-</head>
-<body>
-    <div class="container">
-        <form id="login-form" action="/login" method="post"> <!--Форма для входа-->
+@section('form')
+    <form id="login-form" action="/login" method="post"> <!--Форма для входа-->
             @csrf
             <label class="label">
                 <input type="name" name="name" value="{{ old('name') }}" />                
@@ -29,9 +23,10 @@
                 </div>
                 @enderror
             </label>
-            <button>Вход</button>
-            <a href="/reg">Зарегистрироваться</a>
-        </form>
-    </div>
-</body>
-</html>
+            <button class="btn">Вход</button>
+            <br />
+            <a href="/reg" class="btn">Зарегистрироваться</a>
+            <br />
+            <a href="/logout" class="btn">На главную страницу</a>
+     </form>
+@endsection

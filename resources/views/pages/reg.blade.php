@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регистрация</title>
+@extends('layouts/auth')
+@section('title', 'РЕГИСТРАЦИЯ в Клавиатурном тренажёре')
+@section('headline', 'Зарегистрируйтесь в Клавиатурном тренажёре')
 
-    @vite(entrypoints: ['resources/css/app.css', 'resources/js/app.js']) <!--Подключаем файлы-->
-</head>
-<body>
-    <div class="container">
-        <form id="login-form" action="/reg" method="post" > <!--Форма для входа, action - адрес, куда будет отправлен запрос-->
+@section('form')   
+    <form id="login-form" action="/reg" method="post" > <!--Форма для входа, action - адрес, куда будет отправлен запрос-->
         @csrf <!--у формы доб. скрытое поле с случайным значением, чтобы пользователь не отправил скрытый запрос в БД, для безопастности-->
             <label class="label">
                 <input type="text" name="name" value="{{ old('name')}}" /> <!--value для сохранения старого ввода-->
@@ -47,8 +41,8 @@
                     </div>
                 @enderror
             </label>
-            <button>Зарегистрироваться</button>
-        </form>
-    </div>
-</body>
-</html>
+            <button class="btn">Зарегистрироваться</button>
+            <br />
+            <a href="/logout" class="btn">На главную страницу</a>
+     </form>     
+@endsection
