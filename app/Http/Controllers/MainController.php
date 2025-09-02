@@ -20,6 +20,9 @@ class MainController extends Controller
     public function addPage(){
         return view("pages/add");
     }
+    public function deletePage(){
+        return view("pages/delete");
+    }
     public function addTopic(Request $request){
         $validated = $request->validate([
             'fileToUpload' => 'required',
@@ -35,12 +38,25 @@ class MainController extends Controller
         $file->storePubliclyAs('uploads', $file->getClientOriginalName(), 'public');
         return redirect('/admin');
     }
+    public function deleteTopic(Request $request){
+        $file = $request->file();
+        
+        return redirect('/delete');
+    }
     public function getTopics(){
         $user = Auth::user(); # объект, в котором содержатся данные о пользователе        
-        $topics = Topic::all(); # переменная-объект, хранящая данные всех тем вместе с данными о пользователях
+        $topics = Topic::all(); # переменная-объект, хранящая данные всех тем вместе с данными о пользователях       
         if($user->status == 'admin'){
             return view('pages/admin', ['topics' => $topics]); // ответ с темами для админа
         }
         return view('pages/user', ['topics'=> $topics]); // ответ с темами для пользователя
+    }
+    public function getTopicsChange(){
+        $user = Auth::user(); # объект, в котором содержатся данные о пользователе        
+        $topics = Topic::all(); # переменная-объект, хранящая данные всех тем вместе с данными о пользователях       
+        if($user->status == 'admin'){
+            return view('pages/delete', ['topics' => $topics]); // ответ с темами для админа
+        }
+        return view('/'); // ответ с темами для пользователя
     }
 }

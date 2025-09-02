@@ -1,6 +1,6 @@
 @extends('layouts/authed')
 @section('title', 'Клавиатурный тренажёр')
-@section('headline', 'Добро пожаловать в Клавиатурный тренажёр')
+@section('headline', 'Добавление новой темы для тестирования в Клавиатурный тренажёр')
 
 @section('div')
         <label>Вы зашли как </label>

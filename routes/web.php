@@ -19,6 +19,9 @@ Route::group(['middleware' => ['auth']], function(){ # защищённая гр
     Route::get('/admin', [MainController::class,'adminPage']); # маршрут для администраторов
     Route::get('/add', [MainController::class,'addPage']); # маршрут страницы с добавлением новой темы для тестирования (для администраторов)
     Route::post('/add', [MainController::class,'addTopic']); # при action, ссылающемся на /add, вызывается ф. addTopic, добавляющая текстовый файл в БД Topics
+    Route::get('/delete', [MainController::class,'deletePage']); # маршрут страницы с удалением темы для тестирования (для администраторов)  
     Route::get('/admin',[MainController::class,'getTopics']); # вывод всех тем из БД для админа
     Route::get('/user', [MainController::class,'getTopics']); # вывод всех доступных тем из БД для пользователя
+    Route::get('/delete', [MainController::class,'getTopicsChange']); # вывод всех доступных тем из БД для изменения админом      
+    Route::post('/delete', [MainController::class,'deleteTopic']); # при action, ссылающемся на /delete, вызывается ф. deleteTopic, удаляющая текстовый файл в БД Topics
 });
