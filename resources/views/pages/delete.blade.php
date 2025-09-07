@@ -8,6 +8,7 @@
         <label> с правами администратора</label> 
         <br /><br />   
         <form action="/delete" method="post" enctype="multipart/form-data">
+            @csrf
             <select name="chose_topic" aria-placeholder="Выберите тему для тестирования" class="input">
                 <option value="" disabled selected hidden>Пожалуйста, выберите тему </option> <!--placeholder для элемента select-->
                 @foreach ($topics as $topic)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; # Подключение класса Auth с методами для авторизации пользователя
 use App\Models\Topic; # Подключаем модель для отправки запросов в БД
+use Storage;
 
 class MainController extends Controller
 {
@@ -39,8 +40,11 @@ class MainController extends Controller
         return redirect('/admin');
     }
     public function deleteTopic(Request $request){
-        $file = $request->file();
-        
+        $topicid = $request->input('chose_topic');          
+        $topic = Topic::find($topicid);    
+        Storage::delete('/storage/app/public/uploads/'.$topic->name);
+        $topic->delete();
+
         return redirect('/delete');
     }
     public function getTopics(){
